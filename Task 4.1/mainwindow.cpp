@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QStringList my_items = {"Один", "Два", "Три", "Четыре", "Пять", "Шесть", "Семь", "Восемь", "Девять", "Десять"};
     ui->comboBox->addItems(my_items);
+    ui->comboBox->setCurrentIndex(-1);
 
     ui->pushButton->setText("Нажми меня!");
     ui->pushButton->setCheckable(true);
