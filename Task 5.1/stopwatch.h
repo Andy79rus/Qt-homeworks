@@ -35,7 +35,6 @@ public slots:
 
 private slots:
     void update_time();
-
 };
 
 #endif // STOPWATCH_H

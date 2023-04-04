@@ -16,14 +16,14 @@ Stopwatch::~Stopwatch()
 
 void Stopwatch::startstop()
 {
-    if (my_timer->isActive() != true)
+    if (!(my_timer->isActive()))
                 my_timer->start(100);
     else my_timer->stop();
 }
 
 void Stopwatch::nextroundcounter()
 {
-    round_cnt++;
+    ++round_cnt;
     int delta = (((hours-prev_hours)*60+(minutes-prev_minutes))*60+(seconds-prev_seconds))*10+(decseconds-prev_decseconds);
     prev_hours = hours;
     prev_minutes = minutes;
@@ -47,7 +47,6 @@ void Stopwatch::nextroundcounter()
 void Stopwatch::clear()
 {
     my_timer->stop();
-    my_timer->setInterval(0);
     round_cnt = 0;
     hours = 0;
     minutes = 0;
@@ -62,13 +61,17 @@ void Stopwatch::clear()
 
 void Stopwatch::update_time()
 {
-    if (++decseconds == 10)
+    if (10 == ++decseconds)
     {
         decseconds = 0;
-        if (++seconds == 60)
+        if (60 == ++seconds)
             {
                 seconds = 0;
-                if (++minutes == 60) { minutes = 0; ++hours; }
+                if (60 == ++minutes)
+                    {
+                        minutes = 0;
+                        ++hours;
+                    }
             }
     }
 
